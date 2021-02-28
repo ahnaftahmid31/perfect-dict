@@ -108,4 +108,21 @@ document.getElementById("input").addEventListener("click", function(event) {
 });
 
 
+document.getElementById("box").addEventListener('input', (e) => {
+  e.preventDefault();
+  let input = document.getElementById("box").value.trim().toLowerCase();
+  
+  if (input === '') {
+    document.getElementById("output").innerHTML = "You didn't enter a word. :(";
+    return;  
+  }
 
+  const response = query(input);
+
+  if (response == undefined) {
+    document.getElementById("output").innerHTML = "Sorry, looks like I don't know this word. :(";
+    return;
+  }
+  
+  document.getElementById("output").innerHTML = "The word <mark>" + input + "</mark> in Bangla can mean <span style=\"font-family: 'SolaimanLipi', sans-serif;\">" + response + "</span>.";
+});
